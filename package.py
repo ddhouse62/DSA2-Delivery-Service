@@ -1,18 +1,18 @@
 # Implement a package class to easily store package information for convenient retrieval
 class Package:
-    def __init__(self, id, address, deadline, city, zipcode, weight, delivery_status = "At Hub" ):
-        self.id = id
+    def __init__(self, package_id, address, city, zipcode, weight, deadline, delivery_status = "At Hub" ):
+        self.package_id = package_id
         self.address = address
-        self.deadline = deadline
         self.city = city
         self.zipcode = zipcode
         self.weight = weight
+        self.deadline = deadline
         self.delivery_status = delivery_status
 
     # Implement a representation of a package that displays all stored info at once
     def __repr__(self):
         return f"""
-        Package ID: {self.id}
+        Package ID: {self.package_id}
         Address: {self.address}
         Deadline: {self.deadline}
         City: {self.city}
@@ -22,8 +22,8 @@ class Package:
         """
 
     # Getter functions used to return individual package information
-    def get_id(self):
-        return self.id
+    def get_package_id(self):
+        return self.package_id
 
     def get_address(self):
         return self.address
@@ -40,11 +40,11 @@ class Package:
     def get_weight(self):
         return self.weight
 
-    def get_delivery(self):
+    def get_delivery_status(self):
         return self.delivery_status
 
     # Setter functions used to update package information, if necessary.
-    # NOTE: set_id not given, because id would be primary key in database
+    # NOTE: set_package_id not given, because package_id would be primary key in database
     def set_address(self, address):
         self.address = address
 
@@ -60,5 +60,5 @@ class Package:
     def set_weight(self, weight):
         self.weight = weight
 
-    def set_delivery(self, delivery):
-        self.delivery = delivery
+    def set_delivery_status(self, delivery_status):
+        self.delivery_status = delivery_status
