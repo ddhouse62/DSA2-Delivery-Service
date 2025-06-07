@@ -1,6 +1,6 @@
 # Implement a package class to easily store package information for convenient retrieval
 class Package:
-    def __init__(self, package_id, address, city, zipcode, weight, deadline, delivery_status = "At Hub" ):
+    def __init__(self, package_id, address, city, zipcode, deadline, weight, delivery_status = "At Hub" ):
         self.package_id = package_id
         self.address = address
         self.city = city
@@ -14,9 +14,9 @@ class Package:
         return f"""
         Package ID: {self.package_id}
         Address: {self.address}
-        Deadline: {self.deadline}
         City: {self.city}
         Zip Code: {self.zipcode}
+        Deadline: {self.deadline}
         Weight: {self.weight}
         Delivery Status: {self.delivery_status}
         """
