@@ -26,5 +26,17 @@ with open('package_file.csv') as package_file:
         pack = package.Package(package_id, package_address, package_city, package_zipcode, package_weight, package_deadline)
         package_table.insert(package_id, pack)
 
+# Initialize empty list to hold distance matrix
+distance_matrix = []
 
+# Initialize empty dictionary to map locations to indexes for fast indexing
+address_lookup = []
 
+with open('distance_table.csv', newline = '') as distance_table:
+    distance_reader = csv.reader(distance_table, delimiter = ',')
+    address_lookup = next(distance_reader)
+    for row in distance_reader:
+        distance_matrix.append(row)
+
+print(address_lookup)
+print(distance_matrix)
