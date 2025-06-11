@@ -4,6 +4,7 @@ import csv
 import hash_table
 import package
 import truck
+import nearest_neighbor
 
 # Create Hash Table instance to hold packages in main
 package_table = hash_table.HashTable()
@@ -37,6 +38,3 @@ with open('distance_table.csv', newline = '') as distance_table:
     address_lookup = next(distance_reader)
     for row in distance_reader:
         distance_matrix.append(row)
-
-print(address_lookup)
-print(distance_matrix)

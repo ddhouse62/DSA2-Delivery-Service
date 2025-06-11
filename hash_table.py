@@ -42,7 +42,6 @@ class HashTable:
         # identify index of correct bucket
         bucket = self.hash(key)
         # Return value if key exists in bucket
-        print(self.table[bucket])
         for kv in self.table[bucket]:
             if kv[0] == key:
                 return kv[1]

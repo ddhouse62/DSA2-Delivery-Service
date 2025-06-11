@@ -35,3 +35,9 @@ class Truck:
                 self.packages.append(package)
         else:
             raise ValueError(f"Packages on Truck cannot exceed {self.capacity}.\nCurrent Load: {len(self.packages)}.\nNumber of packages loaded: {len(packages_to_load)}.")
+
+    def get_addresses(self):
+        addresses = []
+        for p in self.packages:
+            addresses.append(p.address)
+        return addresses
