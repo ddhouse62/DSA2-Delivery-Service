@@ -8,6 +8,9 @@ class Package:
         self.weight = weight
         self.deadline = deadline
         self.delivery_status = delivery_status
+        self.arrival_time = None
+        self.departure_time = None
+        self.delivery_time = None
 
     # Implement a representation of a package that displays all stored info at once
     def __repr__(self):
@@ -62,3 +65,12 @@ class Package:
 
     def set_delivery_status(self, delivery_status):
         self.delivery_status = delivery_status
+
+    # package method designed to assist with readability.  Returns packages by ID if address matches current address
+    def address_to_package(self, address):
+        if address == self.address:
+            return self.package_id
+
+    # method to easily return the delivery address of a given package given its ID
+    def package_to_address(self, package_id):
+        return self.address

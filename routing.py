@@ -33,11 +33,11 @@ def get_shortest_distance_node(current, unvisited, address_lookup, distance_look
 
 
 
-# implement nearest-neighbor to route all packages on truck
-def nearest_neighbor(hub, truck_to_route, address_lookup, distance_lookup):
+# implement nearest-neighbor to route a list of addresses
+def get_route(hub, addresses, address_lookup, distance_lookup):
     current_node = hub
     # all packages at same address will be delivered at same time - set removes duplicates
-    unvisited = set(truck_to_route.get_addresses())
+    unvisited = set(addresses)
     visited = []
 
     while len(unvisited) > 0:
@@ -53,3 +53,11 @@ def nearest_neighbor(hub, truck_to_route, address_lookup, distance_lookup):
     visited.append(hub)
 
     return visited
+
+# given a full route, calculate the total distance
+def get_route_distance(route, address_lookup, distance_matrix):
+    route_distance = 0
+    for i in range(len(route) - 1):
+        route_distance += get_distance(route[i], route[i+1], address_lookup, distance_matrix)
+
+    return route_distance
