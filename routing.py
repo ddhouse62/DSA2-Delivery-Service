@@ -8,9 +8,9 @@ def get_distance(address1, address2, address_lookup, distance_lookup):
     index2 = get_address_index(address2, address_lookup)
 
     if distance_lookup[index1][index2] == '':
-        return distance_lookup[index2][index1]
+        return float(distance_lookup[index2][index1])
 
-    return distance_lookup[index1][index2]
+    return float(distance_lookup[index1][index2])
 
 # helper function to identify shortest distance node
 def get_shortest_distance_node(current, unvisited, address_lookup, distance_lookup):
@@ -21,8 +21,10 @@ def get_shortest_distance_node(current, unvisited, address_lookup, distance_look
     shortest_distance_node = None
 
     # iterate over each unvisited node to determine shortest, using existing helper functions
+    # when distance is equal, use first appearance of shortest distance
     for node in unvisited:
-        distance = float(get_distance(current, node, address_lookup, distance_lookup))
+        distance = get_distance(current, node, address_lookup, distance_lookup)
+
         if distance < shortest_distance:
             shortest_distance = distance
             shortest_distance_node = node
