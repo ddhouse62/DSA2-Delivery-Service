@@ -1,3 +1,6 @@
+import datetime
+import package
+
 class HashTable:
     # Chaining Hash Table comprised of a "list of lists"
     def __init__(self, capacity = 10):
@@ -63,6 +66,7 @@ class HashTable:
 
     # Package Lookup function, takes key as input, passes time value previously identified to show stats for package
     # Utilizes existing search function to pass package
-    def lookup(self, key, time = (17, 0)):
+    def lookup(self, key, time = datetime.time(17, 0)):
         package = self.search(key)
-        return package.get_package_stats(time)
+        stats = package.get_package_stats(time)
+        return stats

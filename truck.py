@@ -81,6 +81,7 @@ class Truck:
         # Hub is at WGU facility in address table, index 0
         hub = address_lookup[0]
 
+
         # Extract delivery addresses for package
         addresses = list(set(self.get_addresses()))
 
@@ -89,6 +90,7 @@ class Truck:
 
         # Calculate delivery route using nearest-neighbor algorithm
         route = routing.get_route(hub, addresses, address_lookup, distance_lookup)
+
 
         # Calculate distance of delivery route and append it to mileage
         route_distance = routing.get_route_distance(route, address_lookup, distance_lookup)
@@ -114,6 +116,7 @@ class Truck:
             address = route[i]
             previous_address = route[i - 1]
 
+
             # calculate distance driven from start of route to next address
             delivery_distance += routing.get_distance(previous_address, address, address_lookup, distance_lookup)
 
@@ -124,3 +127,20 @@ class Truck:
             for package in address_package_map[address]:
                 package.delivery_time = (datetime.datetime.combine(datetime.date.today(), package.departure_time) + time_to_address).time()
                 self.packages.remove(package)
+
+
+
+
+    # Calculates the mileage traveled by a truck at a specified time
+    def mileage_at_time(self, time):
+        if time >= self.return_time:
+            mileage = self.mileage
+            return mileage
+        elif time >= self.departure_time and time < self.return_time:
+            time_delta = (datetime.datetime.combine(datetime.date.today(), time)) - (datetime.datetime.combine(datetime.date.today(), self.departure_time))
+            td = time_delta.total_seconds() / 3600.0
+            mileage = td * self.speed
+            return mileage
+        else:
+            mileage = 0
+            return mileage
